@@ -36,13 +36,19 @@ sudo apt-get install -y code
 echo "-------------------------------------- Instalando Sublime Text 3 --------------------------------------"
 sudo apt-get install -y sublime-text sublime-merge
 echo "-------------------------------------- Instalando Docker --------------------------------------"
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 echo "-------------------------------------- Instalando MySQL Workbench --------------------------------------"
 sudo apt-get install -y mysql-workbench
 echo "-------------------------------------- Instalando Brave --------------------------------------"
 sudo apt-get install -y brave-browser
 echo "-------------------------------------- Instalando Peek --------------------------------------"
 sudo apt-get install -y peek
+
+# Docker Compose
+echo "-------------------------------------- Instalando Docker Compose --------------------------------------"
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 echo "-------------------------------------- Instalando Teams --------------------------------------"
 sudo snap install teams-for-linux --beta
@@ -60,8 +66,8 @@ echo "-------------------------------------- Instalando Postman ----------------
 sudo snap install postman
 
 echo "-------------------------------------- Configurando Usuário do GIT --------------------------------------"
-git config --global user.name ""
-git config --global user.email ""
+git config --global user.name "Pedro Schneider"
+git config --global user.email "pedro.schneider@cwi.com.br"
 
 echo "-------------------------------------- Adicionando frescura da Branch --------------------------------------"
 cat <<EOT >> ~/.bashrc
