@@ -2,11 +2,6 @@
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common snapd
 
-# Sublime Text 3
-echo "-------------------------------------- Preparando Sublime Text 3 --------------------------------------"
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-
 # VSCode
 echo "-------------------------------------- Preparando VSCode --------------------------------------"
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -33,8 +28,6 @@ echo "-------------------------------------- UPDATE ----------------------------
 sudo apt-get update
 echo "-------------------------------------- Instalando VSCode --------------------------------------"
 sudo apt-get install -y code
-echo "-------------------------------------- Instalando Sublime Text 3 --------------------------------------"
-sudo apt-get install -y sublime-text sublime-merge
 echo "-------------------------------------- Instalando Docker --------------------------------------"
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 echo "-------------------------------------- Instalando MySQL Workbench --------------------------------------"
@@ -50,20 +43,14 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-echo "-------------------------------------- Instalando Teams --------------------------------------"
-sudo snap install teams-for-linux --beta
+sudo echo "{\"graph\": \"/home/pedro/docker\"}" > /var/lib/docker/daemon.json
+
 echo "-------------------------------------- Instalando Slack --------------------------------------"
 sudo snap install slack --classic
 echo "-------------------------------------- Instalando Skype --------------------------------------"
 sudo snap install skype --classic
-echo "-------------------------------------- Instalando Spotify --------------------------------------"
-sudo snap install spotify
 echo "-------------------------------------- Instalando RocketChat --------------------------------------"
 sudo snap install rocketchat-desktop
-echo "-------------------------------------- Instalando Insomnia --------------------------------------"
-sudo snap install insomnia
-echo "-------------------------------------- Instalando Postman --------------------------------------"
-sudo snap install postman
 
 echo "-------------------------------------- Configurando Usuário do GIT --------------------------------------"
 git config --global user.name "Pedro Schneider"
@@ -81,4 +68,12 @@ EOT
 source ~/.bashrc
 
 echo "-------------------------------------- Instalando Chrome --------------------------------------"
-echo "Não esqueça de instalar o Chrome Manualmente, acesse o site: https://www.google.com/intl/pt-BR/chrome/"
+echo "Para instalar o Chrome, você precisa fazer o download do .deb na pasta Downloads"
+echo "O Firefox será aberto já na página de download, apenas salve o arquivo em '~/Downloads/google-chrome-stable_current_amd64.deb' e feche o Firefox"
+firefox https://www.google.com/intl/pt-BR/chrome/
+sudo dpkg -i ~/Downloads/google-chrome-stable_current_amd64.deb
+sudo apt-get install -f
+
+echo "-------------------------------------------------------------------------------------------"
+echo "-------------------------------------- Reinicie o PC --------------------------------------"
+echo "-------------------------------------------------------------------------------------------"
